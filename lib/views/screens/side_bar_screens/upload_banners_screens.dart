@@ -24,29 +24,33 @@ class UploadScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: Container(
-                  height: 140,
-                  width: 140,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade500,
-                    border: Border.all(color: Colors.grey.shade800),
-                    borderRadius: BorderRadius.circular(10),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(14.0),
+                    child: Container(
+                      height: 140,
+                      width: 140,
+                      decoration: BoxDecoration(
+                        color: Colors.grey.shade500,
+                        border: Border.all(color: Colors.grey.shade800),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text("Banners"),
+                      ),
+                    ),
                   ),
-                  child: Center(
-                    child: Text("Babbers"),
+                  SizedBox(
+                    height: 20,
                   ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow.shade900),
-                onPressed: () {},
-                child: Text("Upload Image"),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.yellow.shade900),
+                    onPressed: () {},
+                    child: Text("Upload Image"),
+                  ),
+                ],
               ),
               SizedBox(
                 width: 30,
