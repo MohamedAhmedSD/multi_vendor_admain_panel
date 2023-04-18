@@ -13,7 +13,8 @@ class UploadScreen extends StatefulWidget {
 class _UploadScreenState extends State<UploadScreen> {
   //! make function to pickImage, you can upload any file type
   dynamic _image;
-
+  //? get fill name
+  String? fileName; //* ? => may not picked any file
   pickImage() async {
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(allowMultiple: false, type: FileType.image);
@@ -24,6 +25,9 @@ class _UploadScreenState extends State<UploadScreen> {
         //! use dynamic variable above
         //* we use _image => on our way to display image or not
         _image = result.files.first.bytes;
+
+        //! get file name
+        fileName = result.files.first.name;
       });
     }
   }
