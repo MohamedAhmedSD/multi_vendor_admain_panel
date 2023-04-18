@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
+  // static const String ordersRoute = "/ordersScreen";
+  static const String route = "/ordersScreen";
 
   @override
   Widget build(BuildContext context) {

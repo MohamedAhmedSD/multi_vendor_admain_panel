@@ -1,3 +1,4 @@
+//! when I use this way we not able to nav
 class AppRoute {
   static const String dashboardRoute = "/dashboardScreen";
   static const String categoriesRoute = "/categoriesScreen";

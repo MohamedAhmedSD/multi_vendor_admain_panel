@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 class VendorScreen extends StatelessWidget {
   const VendorScreen({super.key});
+  // static const String vendorsRoute = "/vendorsScreen";
+  static const String route = "/vendorsScreen";
 
   @override
   Widget build(BuildContext context) {
