@@ -22,6 +22,7 @@ class _UploadScreenState extends State<UploadScreen> {
     if (result != null) {
       setState(() {
         //! use dynamic variable above
+        //* we use _image => on our way to display image or not
         _image = result.files.first.bytes;
       });
     }
@@ -58,9 +59,17 @@ class _UploadScreenState extends State<UploadScreen> {
                         border: Border.all(color: Colors.grey.shade800),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Center(
-                        child: Text("Banners"),
-                      ),
+                      //! display picked image
+                      //! we use image.memory() => take bytes
+                      //? restart app if not work
+                      child: _image != null
+                          ? Image.memory(
+                              _image,
+                              fit: BoxFit.cover,
+                            )
+                          : Center(
+                              child: Text("Banners"),
+                            ),
                     ),
                   ),
                   SizedBox(
