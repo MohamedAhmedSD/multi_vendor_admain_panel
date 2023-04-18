@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:multi_vendor_admain_panel/views/screens/main_screen.dart';
 import 'firebase_options.dart';
 
-//! [8] add new packages && firestore, dont forget minsdk 21
+//! [9] upload banners
 //! switching screen => make screens first
 //* flutter_admin_scaffold: ^1.2.0
 //* stop analysis_options file
