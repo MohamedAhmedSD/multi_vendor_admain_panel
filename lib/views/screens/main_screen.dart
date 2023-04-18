@@ -73,6 +73,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: Colors.yellow.shade900,
       ),
       //! sideBar => items && selectedRoute && onSelected
+      //? headers, footers
       sideBar: SideBar(
         items: [
           AdminMenuItem(
@@ -109,7 +110,32 @@ class _MainScreenState extends State<MainScreen> {
         onSelected: (item) {
           screenSelected(item);
         },
+        //? header
+        header: Container(
+          height: 50,
+          width: double.infinity,
+          color: Color(0xff444444),
+          child: Center(
+            child: Text(
+              'BTOO STORE PANEL',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+        //? footer
+        footer: Container(
+          height: 50,
+          width: double.infinity,
+          color: Color(0xff444444),
+          child: Center(
+            child: Text(
+              'footer',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
       ),
+
       //! may error becuase I am not change body not routs
       // body: Text("Dashboard"),
       body: _selectedItem,
