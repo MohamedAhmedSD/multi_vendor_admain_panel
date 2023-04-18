@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:multi_vendor_admain_panel/core/routes.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -20,17 +21,32 @@ class _MainScreenState extends State<MainScreen> {
       ),
       //! sideBar
       sideBar: SideBar(items: [
-        AdminMenuItem(title: "Dashboard", icon: Icons.dashboard, route: "/"),
         AdminMenuItem(
-            title: "Vendors", icon: CupertinoIcons.person_3, route: "/"),
+            title: "Dashboard",
+            icon: Icons.dashboard,
+            route: AppRoute.dashboardRoute),
         AdminMenuItem(
-            title: "Withdrawal", icon: CupertinoIcons.money_dollar, route: "/"),
+            title: "Vendors",
+            icon: CupertinoIcons.person_3,
+            route: AppRoute.vendorsRoute),
         AdminMenuItem(
-            title: "Orders", icon: CupertinoIcons.shopping_cart, route: "/"),
-        AdminMenuItem(title: "Category", icon: Icons.category, route: "/"),
-        AdminMenuItem(title: "Products", icon: Icons.shop, route: "/"),
+            title: "Withdrawal",
+            icon: CupertinoIcons.money_dollar,
+            route: AppRoute.withdrawalRoute),
         AdminMenuItem(
-            title: "Upload Banners", icon: CupertinoIcons.add, route: "/"),
+            title: "Orders",
+            icon: CupertinoIcons.shopping_cart,
+            route: AppRoute.ordersRoute),
+        AdminMenuItem(
+            title: "Category",
+            icon: Icons.category,
+            route: AppRoute.categoriesRoute),
+        AdminMenuItem(
+            title: "Products", icon: Icons.shop, route: AppRoute.productsRoute),
+        AdminMenuItem(
+            title: "Upload Banners",
+            icon: CupertinoIcons.add,
+            route: AppRoute.uploadBannersRoute),
       ], selectedRoute: ''),
       body: Text("Dashboard"),
     );
