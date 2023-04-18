@@ -34,9 +34,30 @@ class UploadScreen extends StatelessWidget {
                     border: Border.all(color: Colors.grey.shade800),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Center(child: Text("Babbers"),),
+                  child: Center(
+                    child: Text("Babbers"),
+                  ),
                 ),
-              )
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.yellow.shade900),
+                onPressed: () {},
+                child: Text("Upload Image"),
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              //! buttons
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.yellow.shade900),
+                onPressed: () {},
+                child: Text("Save"),
+              ),
             ],
           )
         ],
