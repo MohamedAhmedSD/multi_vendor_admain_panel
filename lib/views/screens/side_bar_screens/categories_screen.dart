@@ -1,6 +1,7 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesScreen extends StatelessWidget {
+class CategoriesScreen extends StatefulWidget {
   CategoriesScreen({super.key});
   //! WE need add route here to be able access it from screenSelctor method
   //! not able to nav by this
@@ -9,8 +10,12 @@ class CategoriesScreen extends StatelessWidget {
   //* so try make all screens cary same name of variable with different value
   static const String route = "/categoriesScreen";
 
+  @override
+  State<CategoriesScreen> createState() => _CategoriesScreenState();
+}
+
+class _CategoriesScreenState extends State<CategoriesScreen> {
   //! now we deal with TFF so we need wrap main column under form
-  //? with using Global key
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   //? method
@@ -20,6 +25,30 @@ class CategoriesScreen extends StatelessWidget {
       print("Good Guy");
     } else {
       print("o Bad Guy");
+    }
+  }
+
+  //! copy pick image here => not good practise
+  dynamic _image;
+
+  //? get fill name
+  String? fileName;
+  //* ? => may not picked any file
+
+  _pickImage() async {
+    FilePickerResult? result = await FilePicker.platform
+        .pickFiles(allowMultiple: false, type: FileType.image);
+
+    //! files should be under condition stmt
+    if (result != null) {
+      setState(() {
+        //! use dynamic variable above
+        //* we use _image => on our way to display image or not
+        _image = result.files.first.bytes;
+
+        //! get file name
+        fileName = result.files.first.name;
+      });
     }
   }
 
@@ -59,9 +88,14 @@ class CategoriesScreen extends StatelessWidget {
                         //! display picked image
                         //! we use image.memory() => take bytes
                         //? restart app if not work
-                        child: Center(
-                          child: Text("Category"),
-                        ),
+                        child: _image != null
+                            ? Image.memory(
+                                _image,
+                                fit: BoxFit.cover,
+                              )
+                            : Center(
+                                child: Text("Category"),
+                              ),
                       ),
                     ),
                     SizedBox(
@@ -70,7 +104,9 @@ class CategoriesScreen extends StatelessWidget {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.yellow.shade900),
-                      onPressed: () {},
+                      onPressed: () {
+                        _pickImage();
+                      },
                       child: Text("Upload Image"),
                     ),
                   ],
