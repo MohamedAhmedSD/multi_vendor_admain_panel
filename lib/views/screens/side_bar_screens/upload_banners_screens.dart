@@ -72,6 +72,11 @@ class _UploadScreenState extends State<UploadScreen> {
       await _firestore.collection("banners").doc(fileName).set({
         "image": imageUrl,
       }).whenComplete(() => EasyLoading.dismiss()); //! 2 easyloading
+
+      //! reset banners after upload image end
+      setState(() {
+        _image = null;
+      });
     }
   }
 
