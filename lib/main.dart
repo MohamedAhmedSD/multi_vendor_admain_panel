@@ -13,6 +13,16 @@ void main() async {
     // options: DefaultFirebaseOptions.currentPlatform,
     options: DefaultFirebaseOptions.android,
   );
+  //! second but hard way to connect with web
+    //! second but hard way to connect with web,
+    //! connect its web first
+    // options :kIsWeb || Platform.isAndroid? FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId,storageBucket: ):null
+    // firebase => project overview => apps =>
+    /// settings icon => read code on sdk setup you will find all data about 4:
+    /// apiKey
+    /// appId
+    /// messagingSenderId
+    /// projectId
   runApp(const MyApp());
 }
 
