@@ -36,6 +36,9 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         'image': imageUrl,
         'categoryName': categoryName,
       }).whenComplete(() => EasyLoading.dismiss());
+      setState(() {
+        _image = null;
+      });
     } else {
       print("o Bad Guy");
     }
