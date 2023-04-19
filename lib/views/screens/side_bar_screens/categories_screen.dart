@@ -97,7 +97,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               alignment: Alignment.topLeft,
               padding: EdgeInsets.all(10),
               child: Text(
-                "Categories",
+                "Category",
                 style: TextStyle(fontWeight: FontWeight.w700, fontSize: 36),
               ),
             ),
@@ -201,6 +201,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               ),
             ),
             //! add categories widget
+            //* show image in web problem
+            //? flutter run -d chrom --web-renderer html
             CategoryWidget(),
           ],
         ),
