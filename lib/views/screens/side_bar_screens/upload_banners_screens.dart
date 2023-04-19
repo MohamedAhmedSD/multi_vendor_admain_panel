@@ -1,4 +1,5 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class UploadScreen extends StatefulWidget {
@@ -30,6 +31,23 @@ class _UploadScreenState extends State<UploadScreen> {
         fileName = result.files.first.name;
       });
     }
+  }
+
+  //! upload to storage
+  //! make an object from firebase storage on upload banners page
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  //? then create function to upload image into storage
+  _uploadBannersToStorage(dynamic image) async {
+    //* create folder then image path we get it from fileName
+    Reference ref = _storage.ref().child("Banners").child(fileName!);
+    //! pass it into storage
+    UploadTask uploadTask = ref.putData(image);
+    TaskSnapshot snapshot = await uploadTask;
+    //! now we need get its url
+    String downloadUrl = await snapshot.ref.getDownloadURL();
+    //! return url
+    return downloadUrl;
   }
 
   @override
