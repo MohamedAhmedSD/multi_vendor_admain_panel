@@ -37,7 +37,10 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         'categoryName': categoryName,
       }).whenComplete(() => EasyLoading.dismiss());
       setState(() {
+        //!reset image
         _image = null;
+        //! reset TFF
+        _formKey.currentState!.reset();
       });
     } else {
       print("o Bad Guy");
@@ -178,7 +181,24 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   child: Text("Save"),
                 ),
               ],
-            )
+            ),
+            //! add dividor
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Divider(
+                color: Colors.grey,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "Categories",
+                  style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
           ],
         ),
       ),
