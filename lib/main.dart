@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:multi_vendor_admain_panel/views/screens/main_screen.dart';
 import 'firebase_options.dart';
 
@@ -7,6 +8,7 @@ import 'firebase_options.dart';
 //! switching screen => make screens first
 //* flutter_admin_scaffold: ^1.2.0
 //* stop analysis_options file
+//? flutter_easyloading: ^3.0.5
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -14,15 +16,15 @@ void main() async {
     options: DefaultFirebaseOptions.android,
   );
   //! second but hard way to connect with web
-    //! second but hard way to connect with web,
-    //! connect its web first
-    // options :kIsWeb || Platform.isAndroid? FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId,storageBucket: ):null
-    // firebase => project overview => apps =>
-    /// settings icon => read code on sdk setup you will find all data about 4:
-    /// apiKey
-    /// appId
-    /// messagingSenderId
-    /// projectId
+  //! second but hard way to connect with web,
+  //! connect its web first
+  // options :kIsWeb || Platform.isAndroid? FirebaseOptions(apiKey: apiKey, appId: appId, messagingSenderId: messagingSenderId, projectId: projectId,storageBucket: ):null
+  // firebase => project overview => apps =>
+  /// settings icon => read code on sdk setup you will find all data about 4:
+  /// apiKey
+  /// appId
+  /// messagingSenderId
+  /// projectId
   runApp(const MyApp());
 }
 
@@ -48,6 +50,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MainScreen(),
+      //! call easyloading package, then call it at any place you want
+      builder: EasyLoading.init(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class UploadScreen extends StatefulWidget {
   const UploadScreen({super.key});
@@ -59,6 +60,8 @@ class _UploadScreenState extends State<UploadScreen> {
     //! first check is user pick an image or not
     //* _image == _image = result.files.first.bytes;
 
+    //! add easy loading to this function
+    EasyLoading.show(); //! 1 easyloading
     if (_image != null) {
       //* we get image url as return ouyput from =>  _uploadBannersToStorage
       String imageUrl = await _uploadBannersToStorage(_image);
@@ -68,7 +71,7 @@ class _UploadScreenState extends State<UploadScreen> {
       //? we use set(data) => data == Map
       await _firestore.collection("banners").doc(fileName).set({
         "image": imageUrl,
-      });
+      }).whenComplete(() => EasyLoading.dismiss()); //! 2 easyloading
     }
   }
 
