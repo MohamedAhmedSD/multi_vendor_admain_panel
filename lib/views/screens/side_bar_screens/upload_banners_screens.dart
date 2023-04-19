@@ -121,7 +121,7 @@ class _UploadScreenState extends State<UploadScreen> {
                               fit: BoxFit.cover,
                             )
                           : Center(
-                              child: Text("Banners"),
+                              child: Text("Banner"),
                             ),
                     ),
                   ),
