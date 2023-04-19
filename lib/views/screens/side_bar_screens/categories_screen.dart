@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:multi_vendor_admain_panel/views/screens/side_bar_screens/widgets/category_widget.dart';
 
 class CategoriesScreen extends StatefulWidget {
   CategoriesScreen({super.key});
@@ -199,6 +200,8 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 ),
               ),
             ),
+            //! add categories widget
+            CategoryWidget(),
           ],
         ),
       ),
