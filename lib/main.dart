@@ -4,7 +4,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:multi_vendor_admain_panel/views/screens/main_screen.dart';
 import 'firebase_options.dart';
 
-//! [9] upload banners
+//! [10] web admin category
 //! switching screen => make screens first
 //* flutter_admin_scaffold: ^1.2.0
 //* stop analysis_options file
