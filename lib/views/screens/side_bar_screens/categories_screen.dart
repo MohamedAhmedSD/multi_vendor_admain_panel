@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class CategoriesScreen extends StatefulWidget {
   CategoriesScreen({super.key});
@@ -18,11 +21,21 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   //! now we deal with TFF so we need wrap main column under form
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  //?
+  late String categoryName;
   //? method
-  uploadCategory() {
+  uploadCategory() async {
     //! first check validator before upload
+    //* adjust validator
+
+    EasyLoading.show();
     if (_formKey.currentState!.validate()) {
       print("Good Guy");
+      String imageUrl = await _uploadCategoryToStorage(_image);
+      await _firestore.collection("categories").doc(fileName).set({
+        'image': imageUrl,
+        'categoryName': categoryName,
+      }).whenComplete(() => EasyLoading.dismiss());
     } else {
       print("o Bad Guy");
     }
@@ -51,6 +64,20 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       });
     }
   }
+
+  //* upload to storage method
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  _uploadCategoryToStorage(dynamic image) async {
+    Reference ref = _storage.ref().child("categoryImages").child(fileName!);
+    UploadTask uploadTask = ref.putData(image);
+    TaskSnapshot snapshot = await uploadTask;
+    String downloadUrl = await snapshot.ref.getDownloadURL();
+    return downloadUrl;
+  }
+
+  //! connect with cloud
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -119,13 +146,18 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                   child: SizedBox(
                     width: 180,
                     child: TextFormField(
+                      //! use onChanged
+                      onChanged: (value) {
+                        categoryName = value;
+                      },
                       //? add validator to it
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please Category Name Must Not Be Empty';
+                          // return 'Please Category Name Must Not Be Empty';
                         } else {
                           return null;
                         }
+                        return null;
                       },
                       decoration: InputDecoration(
                           labelText: "Enter Category Name",
