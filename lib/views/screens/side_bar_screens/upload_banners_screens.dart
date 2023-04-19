@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -48,6 +49,27 @@ class _UploadScreenState extends State<UploadScreen> {
     String downloadUrl = await snapshot.ref.getDownloadURL();
     //! return url
     return downloadUrl;
+  }
+
+  //! connect with cloud
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  //* make method => to save our image on cloud
+  _uploadToFireStore() async {
+    //! first check is user pick an image or not
+    //* _image == _image = result.files.first.bytes;
+
+    if (_image != null) {
+      //* we get image url as return ouyput from =>  _uploadBannersToStorage
+      String imageUrl = await _uploadBannersToStorage(_image);
+      //* now we need reach to certain field of image inside cloud then =>
+      //? assign our image url into it
+      //! doc == fileName
+      //? we use set(data) => data == Map
+      await _firestore.collection("banners").doc(fileName).set({
+        "image": imageUrl,
+      });
+    }
   }
 
   @override
@@ -115,7 +137,10 @@ class _UploadScreenState extends State<UploadScreen> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.yellow.shade900),
-                onPressed: () {},
+                onPressed: () {
+                  //! upload to cloud which automaticlly upload first to storage
+                  _uploadToFireStore();
+                },
                 child: Text("Save"),
               ),
             ],

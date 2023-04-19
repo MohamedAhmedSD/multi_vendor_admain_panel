@@ -19,4 +19,5 @@ samples, guidance on mobile development, and a full API reference.
 # firebase
 
 1. [upload to storage]:
-- make an object from firebase storage on upload banners page
+- make an object from firebase storage on upload banners page, then create function _uploadBannersToStorage
+- make an object from firebase firestore == cloud => on upload banners page, then create function _uploadToFireStore
