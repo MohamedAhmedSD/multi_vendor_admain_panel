@@ -15,7 +15,7 @@ class VendorScreen extends StatelessWidget {
             alignment: Alignment.topLeft,
             padding: EdgeInsets.all(10),
             child: Text(
-              "Vendors",
+              "Manage Vendors",
               style: TextStyle(fontWeight: FontWeight.w700, fontSize: 36),
             ),
           ),
@@ -29,7 +29,7 @@ class VendorScreen extends StatelessWidget {
               RowHeadersWidget(text: "ACTION", flex: 1),
               RowHeadersWidget(text: "VIEW MORE ", flex: 1),
             ],
-          )
+          ),
         ],
       ),
     );

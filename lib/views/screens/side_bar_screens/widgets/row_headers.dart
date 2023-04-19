@@ -19,9 +19,12 @@ class RowHeadersWidget extends StatelessWidget {
             ),
             color: Colors.yellow.shade900,
           ),
-          child: Text(
-            text,
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              text,
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
           ),
         ));
   }
